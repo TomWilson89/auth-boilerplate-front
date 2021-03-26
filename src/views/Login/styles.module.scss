@@ -1,0 +1,88 @@
+@import "../../styles/colors";
+@import "../../styles/titles";
+@import "../../styles/buttons";
+
+.Card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 50px;
+  background-image: linear-gradient(
+    to bottom right,
+    $honey-yellow-100,
+    $honey-yellow-400
+  );
+
+  width: 50%;
+  height: 100%;
+  margin: auto;
+  margin-top: 100px;
+  border-radius: 15px;
+  min-width: 500px;
+
+  > img {
+    width: 200px;
+  }
+
+  > .Title {
+    @include title1;
+    padding: 15px;
+  }
+
+  > form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    > label {
+      font-size: 1.2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+      color: $honey-yellow-500;
+
+      > input {
+        border-radius: 5px;
+        padding: 10px;
+        outline: none;
+        border: none;
+      }
+
+      span {
+        color: $red;
+        font-size: 1rem;
+      }
+    }
+
+    > div {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      button {
+        @include button1;
+        border: 1px solid $honey-yellow-500;
+        font-size: 1.2rem;
+        margin-top: 10px;
+        padding: 15px 25px;
+        outline: none;
+      }
+    }
+  }
+}
+
+.SnackbarContainer {
+  border-radius: 15px;
+  background-color: $honey-yellow-500;
+  font-size: 1.1rem;
+  color: $white;
+}
+
+.SnackbarProgress {
+  background-color: $honey-yellow-500;
+}

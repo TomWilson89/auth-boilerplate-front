@@ -1,0 +1,33 @@
+@import "./breakpoints";
+
+@mixin title1() {
+  font-size: 2rem;
+  color: $honey-yellow-500;
+  font-weight: bold;
+
+  span {
+    color: $honey-yellow-400;
+  }
+
+  @media (max-width: $breakpoint-xs) {
+    font-size: 1.3em;
+  }
+}
+
+@mixin title2() {
+  font-size: 3.75rem;
+  color: $white;
+  font-weight: bold;
+
+  @media (max-width: $breakpoint-xs) {
+    font-size: 1.3em;
+  }
+}
+@mixin title3() {
+  font-size: 1.3rem;
+  font-weight: bold;
+
+  @media (max-width: $breakpoint-xs) {
+    font-size: 1em;
+  }
+}

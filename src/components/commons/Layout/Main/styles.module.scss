@@ -1,0 +1,10 @@
+@import "../../../../styles/colors";
+@import "../../../../styles/breakpoints";
+
+.Container {
+  width: $container-lg;
+  padding: 0 15px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  color: $honey-yellow-500;
+}

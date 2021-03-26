@@ -1,0 +1,65 @@
+@import "./colors";
+
+@mixin button1() {
+  display: inline-block;
+  padding: 15px 20px;
+  background: $honey-yellow-300;
+  color: $honey-yellow-500;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  text-align: center;
+  transition: 0.2s background, 0.2s color;
+  cursor: pointer;
+
+  &:hover,
+  &:focus {
+    background: $honey-yellow-500;
+    color: $honey-yellow-100;
+  }
+}
+
+// @mixin button2() {
+//   display: inline-block;
+//   border: none;
+//   padding: 8px 16px;
+//   background: $blue-500;
+//   color: $white;
+//   border-radius: 8px;
+//   text-decoration: none;
+//   text-align: center;
+//   transition: 0.2s background;
+//   text-transform: uppercase;
+
+//   &:hover,
+//   &:focus {
+//     background: darken($blue-500, 10%);
+//     cursor: pointer;
+//   }
+// }
+// @mixin button3() {
+//   display: inline-block;
+//   border: none;
+//   padding: 14px 16px;
+//   background: $gray;
+//   font-weight: bold;
+//   // color: darken($gray, 20%);
+//   border: 1px solid darken($gray, 10%);
+//   color: $dark-blue-300;
+//   border-radius: 6px;
+//   text-decoration: none;
+//   text-align: center;
+//   transition: 0.2s background, 0.2s color;
+//   text-transform: capitalize;
+
+//   &::after {
+//     content: " \279D";
+//   }
+
+//   &:hover,
+//   &:focus {
+//     background: $blue-300;
+//     color: $white;
+//     cursor: pointer;
+//   }
+// }

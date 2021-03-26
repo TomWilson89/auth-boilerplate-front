@@ -1,0 +1,74 @@
+@import "../../../../styles/colors";
+@import "../../../../styles/breakpoints";
+
+.Container {
+  background-color: darken($honey-yellow-400, 10%);
+
+  .Navbar {
+    max-width: 2000px;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 25px;
+    margin: 0 auto;
+
+    img {
+      width: 80px;
+    }
+
+    div {
+      ul {
+        display: flex;
+        gap: 10px;
+        padding: 10px;
+
+        a {
+          color: $honey-yellow-100;
+          text-decoration: none;
+          font-size: 1.2rem;
+          transition: color 0.3s;
+          position: relative;
+
+          &:hover {
+            color: darken($honey-yellow-100, 20%);
+          }
+
+          &::after {
+            content: "";
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            right: 0;
+            width: 0;
+            margin: 0 auto;
+            background-color: darken($honey-yellow-100, 20%);
+            height: 3px;
+            transition: 0.3s width;
+          }
+
+          &:hover::after {
+            width: 100%;
+          }
+        }
+      }
+    }
+
+    @media (max-width: $breakpoint-sm) {
+      div {
+        ul {
+          a {
+            font-size: 1rem;
+          }
+        }
+      }
+    }
+
+    @media (max-width: $breakpoint-sm) {
+      justify-content: center;
+      text-align: center;
+
+      img {
+        display: none;
+      }
+    }
+  }
+}

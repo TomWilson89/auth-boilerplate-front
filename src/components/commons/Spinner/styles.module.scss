@@ -1,0 +1,18 @@
+@import "../../../styles/colors";
+
+.Spinner {
+  pointer-events: none;
+  width: 2rem;
+  height: 2rem;
+  border: 0.4rem solid transparent;
+  border-color: transparentize($honey-yellow-100, 0.7);
+  border-top-color: $honey-yellow-500;
+  border-radius: 50%;
+  animation: loadingspin 1s linear infinite;
+}
+
+@keyframes loadingspin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
