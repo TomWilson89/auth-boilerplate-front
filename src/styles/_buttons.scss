@@ -1,65 +1,107 @@
 @import "./colors";
+@import "./breakpoints";
 
 @mixin button1() {
   display: inline-block;
-  padding: 15px 20px;
-  background: $honey-yellow-300;
+  padding: 15px 25px;
+  background: $honey-yellow-200;
   color: $honey-yellow-500;
   border-radius: 8px;
+  font-size: 1.2rem;
   text-decoration: none;
   font-weight: bold;
   text-align: center;
   transition: 0.2s background, 0.2s color;
   cursor: pointer;
+  margin-top: 10px;
+  outline: none;
+  border: none;
 
   &:hover,
   &:focus {
     background: $honey-yellow-500;
     color: $honey-yellow-100;
   }
+
+  @media (max-width: $breakpoint-md) {
+    font-size: 1rem;
+    padding: 10px 25px;
+  }
 }
 
-// @mixin button2() {
-//   display: inline-block;
-//   border: none;
-//   padding: 8px 16px;
-//   background: $blue-500;
-//   color: $white;
-//   border-radius: 8px;
-//   text-decoration: none;
-//   text-align: center;
-//   transition: 0.2s background;
-//   text-transform: uppercase;
+@mixin button2() {
+  color: $honey-yellow-100;
+  text-decoration: none;
+  font-size: 1.2rem;
+  transition: color 0.3s;
+  position: relative;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
 
-//   &:hover,
-//   &:focus {
-//     background: darken($blue-500, 10%);
-//     cursor: pointer;
-//   }
-// }
-// @mixin button3() {
-//   display: inline-block;
-//   border: none;
-//   padding: 14px 16px;
-//   background: $gray;
-//   font-weight: bold;
-//   // color: darken($gray, 20%);
-//   border: 1px solid darken($gray, 10%);
-//   color: $dark-blue-300;
-//   border-radius: 6px;
-//   text-decoration: none;
-//   text-align: center;
-//   transition: 0.2s background, 0.2s color;
-//   text-transform: capitalize;
+  &:hover {
+    color: darken($honey-yellow-100, 20%);
+  }
 
-//   &::after {
-//     content: " \279D";
-//   }
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    right: 0;
+    width: 0;
+    margin: 0 auto;
+    background-color: darken($honey-yellow-100, 20%);
+    height: 3px;
+    transition: 0.3s width;
+  }
 
-//   &:hover,
-//   &:focus {
-//     background: $blue-300;
-//     color: $white;
-//     cursor: pointer;
-//   }
-// }
+  &:hover::after {
+    width: 100%;
+  }
+}
+@mixin button3() {
+  padding: 15px 30px;
+  background: $honey-yellow-200;
+  color: $honey-yellow-500;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  text-decoration: none;
+  font-weight: bold;
+  text-align: center;
+  transition: 0.2s background, 0.2s color;
+  cursor: pointer;
+  margin: 10px 0;
+  outline: none;
+  border: none;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 20px;
+  width: 300px;
+
+  > img {
+    width: 30px;
+  }
+
+  &:hover,
+  &:focus {
+    background: $honey-yellow-500;
+    color: $honey-yellow-100;
+  }
+
+  @media (max-width: $breakpoint-md) {
+    font-size: 1rem;
+    padding: 10px 30px;
+  }
+
+  @media (max-width: $breakpoint-xxs) {
+    font-size: 0.9rem;
+    width: 250px;
+
+    > img {
+      width: 25px;
+    }
+  }
+}

@@ -1,0 +1,14 @@
+@import "./breakpoints";
+
+@mixin input1() {
+  border-radius: 5px;
+  padding: 10px;
+  outline: none;
+  border: none;
+  width: 300px;
+  font-family: inherit;
+
+  @media (max-width: $breakpoint-xxs) {
+    width: 220px;
+  }
+}

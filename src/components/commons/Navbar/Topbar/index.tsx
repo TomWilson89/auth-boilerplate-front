@@ -1,8 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 import classes from "./styles.module.scss";
 import logo from "../../../../assets/images/logo-light.png";
+import { AUTH } from "../../../../redux/types";
+import { history } from "../../history";
 
 const routes = [
   { label: "Home", path: "/" },
@@ -12,10 +15,11 @@ const routes = [
 ];
 
 const TopBar: React.FunctionComponent = () => {
+  const dispatch = useDispatch();
   return (
     <div className={classes.Container}>
       <div className={classes.Navbar}>
-        <img src={logo} alt="" />
+        <img src={logo} alt="" onClick={() => history.push("/")} />
 
         <div>
           <ul>
@@ -26,6 +30,9 @@ const TopBar: React.FunctionComponent = () => {
                 </Link>
               );
             })}
+            <button onClick={() => dispatch({ type: AUTH.LOGOUT_REQUEST })}>
+              Logout
+            </button>
           </ul>
         </div>
       </div>
