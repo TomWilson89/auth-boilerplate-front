@@ -60,9 +60,11 @@
         justify-content: center;
         align-items: center;
         gap: 5px;
+        margin: 5px 0;
         color: $honey-yellow-500;
 
         input {
+          margin: 5px 0;
           @include input1;
         }
 
