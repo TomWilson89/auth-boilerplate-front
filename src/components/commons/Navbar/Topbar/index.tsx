@@ -7,12 +7,7 @@ import logo from "../../../../assets/images/logo-light.png";
 import { AUTH } from "../../../../redux/types";
 import { history } from "../../history";
 
-const routes = [
-  { label: "Home", path: "/" },
-  { label: "Blog", path: "/" },
-  { label: "About", path: "/" },
-  { label: "Contact", path: "/" },
-];
+const routes = [{ label: "Home", path: "/" }];
 
 const TopBar: React.FunctionComponent = () => {
   const dispatch = useDispatch();
