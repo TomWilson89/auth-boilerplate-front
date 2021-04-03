@@ -107,7 +107,7 @@ const Register: React.FunctionComponent = () => {
             </button>
           </div>
         </form>
-        <Link to="/login">Already have an account? Signin here!</Link>
+        <Link to="/login">Already have an account? Sign in here!</Link>
       </section>
     </main>
   );
