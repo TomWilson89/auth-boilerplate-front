@@ -2,20 +2,19 @@
 @import "../../styles/titles";
 @import "../../styles/buttons";
 @import "../../styles/inputs";
-@import "../../styles/breakpoints";
 
 .Container {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 5px;
+  padding: 20px 0;
 
   .Card {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 20px 40px;
+    padding: 10px;
     background-image: linear-gradient(
       to bottom right,
       $honey-yellow-100,
@@ -24,7 +23,6 @@
 
     width: 50%;
     height: 100%;
-    margin: 0 auto;
     border-radius: 15px;
     min-width: 500px;
 
@@ -34,15 +32,7 @@
 
     > .Title {
       @include title1;
-      padding: 10px;
-      margin: 0;
-    }
-
-    > p {
-      @include title1;
       padding: 5px;
-      margin: 0;
-      font-size: 1rem;
     }
 
     > a {
@@ -123,7 +113,7 @@
 
   @media (max-width: $breakpoint-xxs) {
     > .Card {
-      min-width: 250px;
+      min-width: 300px;
 
       > img {
         width: 120px;
@@ -152,6 +142,8 @@
 }
 
 .ToastContainer {
+  width: 500px;
+
   @media (max-width: $breakpoint-xs) {
     margin: 10px auto;
     width: 300px;
@@ -159,6 +151,8 @@
 }
 
 .SnackbarContainer {
+  padding: 20px;
+  line-height: 1.2;
   border-radius: 15px;
   background-color: $honey-yellow-500;
   font-size: 1.1rem;

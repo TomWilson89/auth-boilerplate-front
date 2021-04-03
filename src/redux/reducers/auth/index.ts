@@ -39,6 +39,10 @@ export const reducer = (state = initialState, action: AnyAction): AuthState => {
     case AUTH.LOAD_USER_REQUEST:
     case AUTH.FORGOT_PASSWORD_REQUEST:
     case AUTH.RESET_PASSWORD_REQUEST:
+    case AUTH.REGISTER_START:
+    case AUTH.ACTIVATION_REQUEST:
+    case AUTH.GOOGLE_LOGIN_REQUEST:
+    case AUTH.FACEBOOK_LOGIN_REQUEST:
       return {
         ...state,
         isLoading: true,
@@ -46,21 +50,24 @@ export const reducer = (state = initialState, action: AnyAction): AuthState => {
         success: false,
       };
 
+    case AUTH.REGISTER_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        error: null,
+      };
+
     case AUTH.LOGIN_SUCCESS:
+    case AUTH.GOOGLE_LOGIN_SUCCESS:
+    case AUTH.FACEBOOK_LOGIN_SUCCESS:
+    case AUTH.RESET_PASSWORD_SUCCESS:
+    case AUTH.ACTIVATION_SUCCESS:
       return {
         ...state,
         isLoading: false,
         error: null,
         isAuth: true,
         accessToken: payload,
-      };
-
-    case AUTH.RESET_PASSWORD_SUCCESS:
-      return {
-        ...state,
-        isLoading: false,
-        error: null,
-        success: true,
       };
 
     case AUTH.FORGOT_PASSWORD_SUCCESS:
@@ -81,7 +88,11 @@ export const reducer = (state = initialState, action: AnyAction): AuthState => {
       };
 
     case AUTH.LOGIN_FAILURE:
+    case AUTH.GOOGLE_LOGIN_FAILURE:
+    case AUTH.FACEBOOK_LOGIN_FAILURE:
     case AUTH.LOAD_USER_FAILURE:
+    case AUTH.REGISTER_FAILURE:
+    case AUTH.ACTIVATION_FAILURE:
       return {
         ...state,
         isLoading: false,

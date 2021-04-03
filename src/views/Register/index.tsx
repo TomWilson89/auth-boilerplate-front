@@ -5,33 +5,41 @@ import * as yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Helmet from "react-helmet";
 
 import logo from "../../assets/images/logo.png";
-import { login } from "../../redux/actions";
+import { createAccount } from "../../redux/actions";
 import classes from "./styles.module.scss";
 import { RootState } from "../../redux/models";
 import { useHistory } from "react-router";
 import Spinner from "../../components/commons/Spinner";
 import { Link } from "react-router-dom";
-import GoogleLoginButton from "../../components/GoogleLogin";
-import FacebookLoginButton from "../../components/FacebookLogin";
+import { Helmet } from "react-helmet";
 
 type FormData = {
   password: string;
   email: string;
+  name: string;
+  confirmPassword: string;
 };
 
 const schema = yup.object().shape({
+  name: yup
+    .string()
+    .required("Name is required")
+    .min(2, "Name must be at least 2 characters long")
+    .max(32, "Name must be at most 32 characters long"),
   email: yup.string().email("Email is not valid").required("Email is required"),
   password: yup
     .string()
     .required("Password is required")
     .min(6, "Password must be at least 6 characters long")
     .max(20, "Password must be at most 20 characters long"),
+  confirmPassword: yup
+    .string()
+    .oneOf([yup.ref("password"), null], "Passwords must match"),
 });
 
-const Login: React.FunctionComponent = () => {
+const Register: React.FunctionComponent = () => {
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -41,8 +49,8 @@ const Login: React.FunctionComponent = () => {
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = handleSubmit(({ email, password }) => {
-    dispatch(login({ email, password }));
+  const onSubmit = handleSubmit((data) => {
+    dispatch(createAccount(data));
   });
 
   React.useEffect(() => {
@@ -54,28 +62,27 @@ const Login: React.FunctionComponent = () => {
   return (
     <main className={classes.Container}>
       <Helmet>
-        <title>OHoney | Login</title>
+        <title>OHoney | Create Account</title>
       </Helmet>
       <section className={classes.Card}>
         <ToastContainer
-          newestOnTop
           className={classes.ToastContainer}
-          closeButton={false}
+          newestOnTop
           progressClassName={classes.SnackbarProgress}
           toastClassName={classes.SnackbarContainer}
-          autoClose={3000}
+          autoClose={5000}
         />
         <img src={logo} alt="Logo" />
 
-        <GoogleLoginButton />
-
-        <FacebookLoginButton />
-
-        <p>or</p>
-
-        <h1 className={classes.Title}>Login with your email</h1>
+        <h1 className={classes.Title}>Create account</h1>
 
         <form onSubmit={onSubmit}>
+          <label>
+            Name
+            <input name="name" type="text" ref={register} />
+            <span> {errors.name?.message} </span>
+          </label>
+
           <label>
             Email
             <input name="email" type="text" ref={register} />
@@ -87,6 +94,12 @@ const Login: React.FunctionComponent = () => {
             <input name="password" type="password" ref={register} />
             <span> {errors.password?.message} </span>
           </label>
+
+          <label>
+            Confirm Password
+            <input name="confirmPassword" type="password" ref={register} />
+            <span> {errors.confirmPassword?.message} </span>
+          </label>
           <div>
             {isLoading && <Spinner />}
             <button disabled={isLoading} type="submit">
@@ -94,11 +107,10 @@ const Login: React.FunctionComponent = () => {
             </button>
           </div>
         </form>
-        <Link to="/forgot-password">Forgot password?</Link>
-        <Link to="/register">Don't have an account? Signup here!</Link>
+        <Link to="/login">Already have an account? Signin here!</Link>
       </section>
     </main>
   );
 };
 
-export default Login;
+export default Register;
