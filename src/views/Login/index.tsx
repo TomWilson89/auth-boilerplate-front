@@ -14,7 +14,7 @@ import { RootState } from "../../redux/models";
 import { useHistory } from "react-router";
 import Spinner from "../../components/commons/Spinner";
 import { Link } from "react-router-dom";
-// import GoogleLoginButton from "../../components/GoogleLogin";
+import GoogleLoginButton from "../../components/GoogleLogin";
 // import FacebookLoginButton from "../../components/FacebookLogin";
 
 type FormData = {
@@ -67,11 +67,11 @@ const Login: React.FunctionComponent = () => {
         />
         <img src={logo} alt="Logo" />
 
-        {/* <GoogleLoginButton /> */}
+        <GoogleLoginButton />
 
         {/* <FacebookLoginButton /> */}
 
-        {/* <p>or</p> */}
+        <p>or</p>
 
         <h1 className={classes.Title}>Login with your email</h1>
 
@@ -95,7 +95,7 @@ const Login: React.FunctionComponent = () => {
           </div>
         </form>
         <Link to="/forgot-password">Forgot password?</Link>
-        <Link to="/register">Don't have an account? Signup here!</Link>
+        <Link to="/register">Don't have an account? Sign up here!</Link>
       </section>
     </main>
   );
