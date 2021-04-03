@@ -52,5 +52,15 @@
         display: none;
       }
     }
+
+    @media (max-width: $breakpoint-xxs) {
+      > div {
+        > ul {
+          a {
+            margin: 0 5px;
+          }
+        }
+      }
+    }
   }
 }
